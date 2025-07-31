@@ -1,0 +1,85 @@
+/*!
+ * Hamburgers
+ * @description Tasty CSS-animated hamburgers
+ * @author Jonathan Suh @jonsuh
+ * @site https://jonsuh.com/hamburgers
+ * @link https://github.com/jonsuh/hamburgers
+ */
+ :root {
+	--hamburger-line-color: black;
+	--hamburger-line-height: 2px;
+	--hamburger-width: 30px;
+	--hamburger-height: min(6vw, 24px);
+ }
+@media (hover: none) or (pointer: coarse) {
+	.hamburger:hover {
+		opacity: inherit !important; 
+	}
+	.hamburger.active:hover {
+		opacity: inherit !important; 
+	}
+}
+.hamburger {
+	display: inline-block;
+	-webkit-tap-highlight-color: transparent;
+	cursor: pointer;
+	transition-property: opacity, filter;
+	transition-duration: 0.15s;
+	transition-timing-function: linear;
+	font: inherit;
+	color: inherit;
+	text-transform: none;
+	background-color: transparent;
+	border: 0;
+	margin: 0;
+	padding: 0;
+	overflow: visible;
+}
+.hamburger:hover {
+	opacity: 0.7; 
+}
+.hamburger.active:hover {
+	opacity: 0.7; 
+}
+
+.hamburger-box {
+	width: var(--hamburger-width);
+	height: var(--hamburger-height);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	position: relative;
+}
+
+.hamburger-top, .hamburger-middle, .hamburger-bottom {
+	width: var(--hamburger-width);
+	height: var(--hamburger-line-height);
+	background-color: var(--hamburger-line-color);
+	border-radius: 4px;
+
+	transition-property: transform;
+	transition-duration: 0.15s;
+	transition-timing-function: ease; 
+}
+
+/*
+* Slider
+*/
+.hamburger--slider .hamburger-middle {
+	transition-property: transform, opacity;
+	transition-timing-function: ease;
+	transition-duration: 0.15s; 
+}
+
+.hamburger--slider.active .hamburger-top {
+	/*transform: translate3d(0, 10px, 0) rotate(45deg); */
+	transform: translate3d(0, calc((var(--hamburger-height) - var(--hamburger-line-height)) / 2), 0) rotate(45deg);
+}
+.hamburger--slider.active .hamburger-middle {
+	transform: rotate(-45deg) translate3d(-5.71429px, -6px, 0);
+	opacity: 0;
+}
+.hamburger--slider.active .hamburger-bottom {
+	/*transform: translate3d(0, -10px, 0) rotate(-45deg);*/
+	transform: translate3d(0, calc((var(--hamburger-height) - var(--hamburger-line-height)) / 2 * -1), 0) rotate(-45deg);
+}

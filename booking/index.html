@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Fly with Damon | Book a Lesson</title>
+	<link rel="icon" type="image/ico" href="/favicon.ico">
+	<link rel="stylesheet" href="/reset.css">
+	<link rel="stylesheet" href="/hamburgers.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/overrides.css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<style>
+		#wrapper {
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			justify-content: center;
+			align-items: center;
+			flex-wrap: wrap;
+			column-gap: 2vw;
+			row-gap: 4vw;
+		}
+		#rainbow {
+			width: 35rem;
+			max-width: 100%;
+			height: 28rem;
+			object-fit: cover;
+		}
+		.text {
+			flex: 1; 
+			min-width: 35%;
+		}
+		#contact-area {
+			width: fit-content;
+			justify-self: center;
+			opacity: 0;
+			transition: opacity 0.6s ease;
+		}
+		#contact-area.visible {
+			opacity: 1;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="topbar" class="box-shadow">
+			<img src="/images/skychicken-blue.png" id="logo">
+			<h1 id="title" class="special-gothic-expanded-one-regular">Fly with Damon</h1>
+			<button id="hamburger" class="hamburger hamburger--slider">
+				<div class="hamburger-box">
+					<div class="hamburger-top"></div>
+					<div class="hamburger-middle"></div>
+					<div class="hamburger-bottom"></div>
+				</div>
+			</button>
+			<nav id="nav-links">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/about" class="nav-link">About</a>
+				<a href="/booking" class="nav-link active">Book a Lesson</a>
+				<a href="/commissions" class="nav-link">Art</a>
+			</nav>
+		</div>
+	</header>
+
+	<div id="content">
+		<div id="wrapper">
+			<div class="text">
+				<h1 class="">Get in Touch</h1>
+				<br>
+				<p>
+					Contact me so we can book a lesson.
+					<br><br>
+					Don't hesitate to reach out over text as this is my preferred method of communication.
+					<br><br>
+					Я говорю́ по-ру́сски.
+				</p>
+				<br>
+				<div class="align-center">
+					<button class="button" id="reveal-contact">Reveal Contact</button>
+				</div>
+				<br>
+				<div id="contact-area">
+					<p><i><br><br></i></p>
+				</div>
+				<br>
+			</div>
+			<img src="/images/rainbow.jpeg" id="rainbow" class="article-image">
+		</div>
+		
+		<footer>
+			<b><a href="https://airamericafc.com/" class="persistent-link ">Air America Flight Center</a></b> &#8226; 
+			1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
+			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class="persistent-link  uncolored-link">Linkedin</a> &#8226; 
+			<a href="https://www.instagram.com/wild_nomad_art/" class="persistent-link  uncolored-link">Instagram</a> &#8226; 
+			<a href="/booking/" class="persistent-link uncolored-link">Contact</a>
+		</footer>
+	</div>
+	<script src="/script.js"></script>
+</body>
+</html>
