@@ -1,10 +1,84 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-	<meta http-equiv="refresh" content="0; url=/booking" />
-	<title>Redirecting...</title>
+	<title>Fly with Damon | Contact</title>
+	<link rel="icon" type="image/ico" href="/favicon.ico">
+	<link rel="stylesheet" href="/reset.css">
+	<link rel="stylesheet" href="/hamburgers.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/overrides.css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	<style>
+		#rainbow {
+			width: 35rem;
+			max-width: 100%;
+			height: 28rem;
+			object-fit: cover;
+		}
+	</style>
 </head>
 <body>
-	<p>If you are not redirected automatically, follow this <a href="/booking">link</a>.</p>
+	<header>
+		<div id="topbar" class="box-shadow">
+			<img src="/images/skychicken-blue.png" id="logo" height="72px">
+			<h1 id="title" class="special-gothic-expanded-one-regular">Fly with Damon</h1>
+			<button id="hamburger" class="hamburger hamburger--slider">
+				<div class="hamburger-box">
+					<div class="hamburger-top"></div>
+					<div class="hamburger-middle"></div>
+					<div class="hamburger-bottom"></div>
+				</div>
+			</button>
+			<nav id="nav-links">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/about" class="nav-link">About</a>
+				<a href="/booking" class="nav-link">Book a Lesson</a>
+				<a href="/contact" class="nav-link active">Contact</a>
+				<a href="/art" class="nav-link">Art</a>
+			</nav>
+		</div>
+	</header>
+
+	<div id="content">
+		<div class="column-wrapper card" id="get-in-touch">
+			<div class="text-column">
+				<div>
+					<h1>Contact Me</h1>
+					<br>
+					<p>
+						Have a question? Let's get in touch.
+						<br><br>
+						Don't hesitate to reach out over text as this is my preferred method of communication.
+						<br><br>
+						Я говорю́ по-ру́сски.
+					</p>
+				</div>
+				<span class="half-line-break"></span>
+				<div id="contact-interact-wrapper">
+					<button class="button" id="reveal-contact">Reveal Info</button>
+					<div id="contact-text">
+						<p>Email: emailto0000@gmail.com<br>Phone: (555)-555-5555</p>
+					</div>
+				</div>
+			</div>
+			<img src="/images/rainbow.jpeg" id="rainbow">
+		</div>
+		
+		<footer>
+			<b><a href="https://airamericafc.com/">Air America Flight Center</a></b> &#8226; 
+			1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
+			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class=" uncolored-link">Linkedin</a> &#8226; 
+			<a href="https://www.instagram.com/wild_nomad_art/" class=" uncolored-link">Instagram</a> &#8226; 
+			<a href="/booking/" class="uncolored-link">Contact</a>
+		</footer>
+	</div>
+	<script src="/script.js"></script>
 </body>
 </html>

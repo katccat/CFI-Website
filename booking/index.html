@@ -16,15 +16,22 @@
 	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<style>
-		#wrapper {
-			width: 100%;
+		.text-column {
+			flex: 1 1 0;
+		}
+		img.slideshow {
+			object-fit: contain;
+			
+		}
+		#slideshow-container {
+			/*height: min(35rem, 44vmax);*/
+			width: min(35rem, 100%);
 			display: flex;
+			flex-basis: 1;
 			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-			column-gap: 2vw;
-			row-gap: 4vw;
+			justify-content: flex-start;
+			border: 1px solid;
+			border-color: #333333;
 		}
 		#rainbow {
 			width: 35rem;
@@ -32,25 +39,16 @@
 			height: 28rem;
 			object-fit: cover;
 		}
-		.text {
-			flex: 1; 
-			min-width: 35%;
-		}
-		#contact-area {
-			width: fit-content;
-			justify-self: center;
-			opacity: 0;
-			transition: opacity 0.6s ease;
-		}
-		#contact-area.visible {
-			opacity: 1;
+		#get-in-touch.card {
+			background-color: rgba(245, 245, 245, 0.65);
+			padding-left: 20px;
 		}
 	</style>
 </head>
 <body>
 	<header>
 		<div id="topbar" class="box-shadow">
-			<img src="/images/skychicken-blue.png" id="logo">
+			<img src="/images/skychicken-blue.png" id="logo" height="72px">
 			<h1 id="title" class="special-gothic-expanded-one-regular">Fly with Damon</h1>
 			<button id="hamburger" class="hamburger hamburger--slider">
 				<div class="hamburger-box">
@@ -63,44 +61,97 @@
 				<a href="/" class="nav-link">Home</a>
 				<a href="/about" class="nav-link">About</a>
 				<a href="/booking" class="nav-link active">Book a Lesson</a>
+				<a href="/contact" class="nav-link">Contact</a>
 				<a href="/art" class="nav-link">Art</a>
 			</nav>
 		</div>
 	</header>
 
 	<div id="content">
-		<div id="wrapper">
-			<div class="text">
-				<h1 class="">Get in Touch</h1>
+		<img src="/images/bookalesson2.png" class="banner-cover">
+		<br>
+		<div class="column-wrapper">
+			<div class="text-column">
+				
+				<h1>Hourly Rate: $43/hr</h1>
 				<br>
-				<p>
-					Contact me so we can book a lesson.
-					<br><br>
-					Don't hesitate to reach out over text as this is my preferred method of communication.
-					<br><br>
-					Я говорю́ по-ру́сски.
-				</p>
+				<h3>My Services:</h3>
+				<span class="half-line-break"></span>
+				<ul>
+					<li>Private, Commercial & CFI Training</li>
+					<li>Written Endorsements</li>
+					<li>Checkride Refreshers</li>
+					<li>Instrument Proficiency Checks</li>
+					<li>Biannual Flight Reviews</li>
+				</ul>
 				<br>
-				<div class="align-center">
-					<button class="button" id="reveal-contact">Reveal Contact</button>
-				</div>
-				<br>
-				<div id="contact-area">
-					<p><i><br><br></i></p>
-				</div>
-				<br>
+				<p>I can instruct you in any plane at <a href="https://airamericafc.com/our-fleet-rates/">Air America</a> or one of your own.</p>
 			</div>
-			<img src="/images/rainbow.jpeg" id="rainbow" class="article-image">
+			<div style="display: flex;flex-direction: column;flex: 1; min-width: 400px; align-items: center;justify-items: center;">
+				<div id="slideshow-container">
+					<img id="slideshow" class="slideshow" src="/images/slides/1.png">
+				</div>
+				<a class="button" href="/files/CFI Master Document.pdf" style="width: auto;">Course Sequence</a>
+			</div>
+		</div>
+		
+		<br><br>
+
+		<div class="column-wrapper card" id="get-in-touch">
+			<div class="text-column">
+				<div>
+					<h1>Book Me</h1>
+					<br>
+					<p>
+						Sign into <a href="https://app.flightschedulepro.com/Account/Signup/186107">Flight Schedule Pro</a> to make an appointment with me through my school.
+						<br><br>
+						Feel free to contact me with any questions as well.
+						<br><br>
+						See you soon!
+					</p>
+					<span class="half-line-break"></span>
+					<a class="button" href="https://app.flightschedulepro.com/Account/Signup/186107">Book Now</a>
+				</div>
+			</div>
+			<img src="/images/rainbow.jpeg" id="rainbow">
 		</div>
 		
 		<footer>
-			<b><a href="https://airamericafc.com/" class="persistent-link ">Air America Flight Center</a></b> &#8226; 
+			<b><a href="https://airamericafc.com/">Air America Flight Center</a></b> &#8226; 
 			1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
-			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class="persistent-link  uncolored-link">Linkedin</a> &#8226; 
-			<a href="https://www.instagram.com/wild_nomad_art/" class="persistent-link  uncolored-link">Instagram</a> &#8226; 
-			<a href="/booking/" class="persistent-link uncolored-link">Contact</a>
+			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class=" uncolored-link">Linkedin</a> &#8226; 
+			<a href="https://www.instagram.com/wild_nomad_art/" class=" uncolored-link">Instagram</a> &#8226; 
+			<a href="/booking/" class="uncolored-link">Contact</a>
 		</footer>
 	</div>
 	<script src="/script.js"></script>
+	<script>
+		const slideshow = document.getElementById("slideshow");
+		const image_directory = "/images/slides/";
+		const images = [
+			"1.png", 
+			"2.png", 
+			"3.png", 
+			"4.png"];
+		start_slide_show(slideshow, image_directory, images, 6000);
+		const get_in_touch = document.getElementById("get-in-touch");
+		const booking_area = document.getElementById("booking");
+		window.onload = function() {
+			if (is_portrait.matches) {
+				get_in_touch.classList.remove("card");
+				booking.classList.add("align-center");
+			}
+		}
+		window.addEventListener('resize', function() {
+			if (is_portrait.matches) {
+				get_in_touch.classList.remove("card");
+				booking.classList.add("align-center");
+			}
+			else {
+				booking.classList.remove("align-center");
+				get_in_touch.classList.add("card");
+			}
+		});
+	</script>
 </body>
 </html>

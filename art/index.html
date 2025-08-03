@@ -16,25 +16,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<style>
-		#wrapper {
-			width: 100%;
-			display: flex;
-			flex-direction: row;
-			justify-content: center;
-			align-items: center;
-			flex-wrap: wrap;
-			column-gap: 2vw;
-			row-gap: 4vw;
-		}
-		#art {
-			object-fit: cover;
-			width: 100%;
-			opacity: 1;
-			transition: opacity 0.3s ease;
-		}
-		#art.fade-out {
-			opacity: 0;
-		}
 		#art-container {
 			height: min(35rem, 44vmax);
 			width: min(35rem, 100%);
@@ -42,25 +23,12 @@
 			flex-direction: row;
 			justify-content: flex-start;
 		}
-		.text {
-			flex: 1; 
-			min-width: 35%;
-		}
-		#contact-area {
-			width: fit-content;
-			justify-self: center;
-			opacity: 0;
-			transition: opacity 0.6s ease;
-		}
-		#contact-area.visible {
-			opacity: 1;
-		}
 	</style>
 </head>
 <body>
 	<header>
 		<div id="topbar" class="box-shadow">
-			<img src="/images/skychicken-blue.png" id="logo">
+			<img src="/images/skychicken-blue.png" id="logo" height="72px">
 			<h1 id="title" class="special-gothic-expanded-one-regular">Fly with Damon</h1>
 			<button id="hamburger" class="hamburger hamburger--slider">
 				<div class="hamburger-box">
@@ -73,43 +41,45 @@
 				<a href="/" class="nav-link">Home</a>
 				<a href="/about" class="nav-link">About</a>
 				<a href="/booking" class="nav-link">Book a Lesson</a>
+				<a href="/contact" class="nav-link">Contact</a>
 				<a href="/art" class="nav-link active">Art</a>
 			</nav>
 		</div>
 	</header>
 
 	<div id="content">
-		<div id="wrapper">
-			<div class="text">
-				<h1 class="">I take commissions!</h1>
-				<br>
-				<p>
-					I love planes, and that's no secret if you look at my sketchbook.
-					I can paint your favorite aircraft or even make you a portrait, digitally or on a canvas.
-					<br><br>
-					Follow my <a href="https://www.instagram.com/wild_nomad_art/">Instagram</a> for more!
-				</p>
-				<br>
-				<div class="align-center">
-					<button class="button" id="reveal-contact">Reveal Contact</button>
+		<div class="column-wrapper">
+			<div class="text-column">
+				<div class="text">
+					<h1>I take commissions!</h1>
+					<br>
+					<p>
+						I love planes, and that's no secret if you look at my sketchbook.
+						I can paint your favorite aircraft or even make you a portrait, digitally or on a canvas.
+					</p>
 				</div>
-				<br>
-				<div id="contact-area">
-					<p><i><br><br></i></p>
+				<br><br>
+				<h2>Pricing: $20</h2>
+				<span class="half-line-break"></span>
+				<p>Commission me at my number, email, or <a href="https://www.instagram.com/wild_nomad_art/">Instagram</a> where you can see more of my art.</p>
+				<span class="half-line-break"></span>
+				<div id="contact-interact-wrapper">
+					<button class="button" id="reveal-contact">Order Now</button>
+					<div id="contact-text">
+						<p>Email: emailto0000@gmail.com<br>Phone: (555)-555-5555</p>
+					</div>
 				</div>
-				<br>
 			</div>
 			<div id="art-container">
-				<img src="/images/art/516400250_1249684256539601_8504334400387195195_n.heic" id="art" class="article-image">
+				<img id="art" class="slideshow">
 			</div>
 		</div>
-		
 		<footer>
-			<b><a href="https://airamericafc.com/" class="persistent-link ">Air America Flight Center</a></b> &#8226; 
+			<b><a href="https://airamericafc.com/">Air America Flight Center</a></b> &#8226; 
 			1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
-			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class="persistent-link  uncolored-link">Linkedin</a> &#8226; 
-			<a href="https://www.instagram.com/wild_nomad_art/" class="persistent-link  uncolored-link">Instagram</a> &#8226; 
-			<a href="/booking/" class="persistent-link uncolored-link">Contact</a>
+			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class=" uncolored-link">Linkedin</a> &#8226; 
+			<a href="https://www.instagram.com/wild_nomad_art/" class=" uncolored-link">Instagram</a> &#8226; 
+			<a href="/booking/" class="uncolored-link">Contact</a>
 		</footer>
 	</div>
 	<script src="/script.js"></script>
@@ -117,35 +87,18 @@
 		const art_element = document.getElementById("art");
 		const art_directory = "/images/art/";
 		let images = [];
-		let current_index = 0;
 
 		fetch(art_directory + 'image-list.json')
 		.then(response => response.json())
 		.then(data => {
 			images = data;
 			if (images.length > 0) {
-				updateImage();
-				setInterval(updateImage, 5000);
+				start_slide_show(art_element, art_directory, images, 5000);
 			}
 		})
 		.catch(error => {
 			console.error("Error loading image list:", error);
 		});
-
-		function updateImage() {
-			art_element.classList.add('fade-out');
-
-			// Wait for fade-out to complete before changing image
-			setTimeout(() => {
-				art_element.src = art_directory + images[current_index];
-				current_index = (current_index + 1) % images.length;
-
-				// Wait for the image to load before fading in
-				art_element.onload = () => {
-					art_element.classList.remove('fade-out');
-				};
-			}, 300); // match this to the CSS transition duration
-		}
 	</script>
 </body>
 </html>
