@@ -49,8 +49,8 @@ p, li {
 	font-size: 20px;
 	color: #333333;
 }
-ul {
-	list-style-position: inside;
+li {
+	margin-left: 1em;
 }
 
 /* Layout and Structure */
@@ -268,8 +268,11 @@ span.half-line-break {
 	flex-wrap: wrap;
 	flex: 0 0 auto;
 }
-#reveal-contact.button {
+.button.auto {
 	width: auto;
+}
+#reveal-contact.button::before {
+	content: "Contact Me";
 }
 #contact-text {
 	width: fit-content;

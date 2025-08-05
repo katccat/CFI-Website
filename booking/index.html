@@ -19,9 +19,21 @@
 		.text-column {
 			flex: 1 1 0;
 		}
+		.cfi-info-div {
+			flex: 1 1 0;
+			min-width: min(100%, 300px);
+			align-self: flex-start;
+		}
 		img.slideshow {
 			object-fit: contain;
-			
+		}
+		#slideshow-div {
+			display: flex;
+			flex-direction: column;
+			flex: 1;
+			min-width: min(100%, 450px);
+			align-items: center;
+			justify-items: center;
 		}
 		#slideshow-container {
 			/*height: min(35rem, 44vmax);*/
@@ -71,11 +83,11 @@
 		<img src="/images/bookalesson2.png" class="banner-cover">
 		<br>
 		<div class="column-wrapper">
-			<div class="text-column">
+			<div class="cfi-info-div">
 				
-				<h1>Hourly Rate: $43/hr</h1>
+				<h1>Hourly Rate: $43</h1>
 				<br>
-				<h3>My Services:</h3>
+				<h3>I Can Provide:</h3>
 				<span class="half-line-break"></span>
 				<ul>
 					<li>Private, Commercial & CFI Training</li>
@@ -87,11 +99,11 @@
 				<br>
 				<p>I can instruct you in any plane at <a href="https://airamericafc.com/our-fleet-rates/">Air America</a> or one of your own.</p>
 			</div>
-			<div style="display: flex;flex-direction: column;flex: 1; min-width: 400px; align-items: center;justify-items: center;">
+			<div id="slideshow-div">
 				<div id="slideshow-container">
 					<img id="slideshow" class="slideshow" src="/images/slides/1.png">
 				</div>
-				<a class="button" href="/files/CFI Master Document.pdf" style="width: auto;">Course Sequence</a>
+				<a class="button auto" href="/files/CFI Master Document.pdf">View Course Sequence</a>
 			</div>
 		</div>
 		
@@ -100,20 +112,25 @@
 		<div class="column-wrapper card" id="get-in-touch">
 			<div class="text-column">
 				<div>
-					<h1>Book Me</h1>
+					<h1>Book a Lesson</h1>
 					<br>
 					<p>
-						Sign into <a href="https://app.flightschedulepro.com/Account/Signup/186107">Flight Schedule Pro</a> to make an appointment with me through my school.
+						Want to book a lesson? Reach out to me at my email or phone so we can get started.
 						<br><br>
-						Feel free to contact me with any questions as well.
+						Make an account on <a href="https://app.flightschedulepro.com/Account/Signup/186107">Flight Schedule Pro</a> so I can schedule the appointment with you.
 						<br><br>
 						See you soon!
 					</p>
 					<span class="half-line-break"></span>
-					<a class="button" href="https://app.flightschedulepro.com/Account/Signup/186107">Book Now</a>
+					<div id="contact-interact-wrapper">
+					<button class="button auto" id="reveal-contact"></button>
+					<div id="contact-text">
+						<p>Email: emailto0000@gmail.com<br>Phone: (555)-555-5555</p>
+					</div>
+				</div>
 				</div>
 			</div>
-			<img src="/images/rainbow.jpeg" id="rainbow">
+			<img src="/images/orangesky2.png" id="rainbow">
 		</div>
 		
 		<footer>
@@ -121,7 +138,7 @@
 			1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
 			<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class=" uncolored-link">Linkedin</a> &#8226; 
 			<a href="https://www.instagram.com/wild_nomad_art/" class=" uncolored-link">Instagram</a> &#8226; 
-			<a href="/booking/" class="uncolored-link">Contact</a>
+			<a href="/contact/" class="uncolored-link">Contact</a>
 		</footer>
 	</div>
 	<script src="/script.js"></script>
@@ -135,20 +152,16 @@
 			"4.png"];
 		start_slide_show(slideshow, image_directory, images, 6000);
 		const get_in_touch = document.getElementById("get-in-touch");
-		const booking_area = document.getElementById("booking");
 		window.onload = function() {
 			if (is_portrait.matches) {
 				get_in_touch.classList.remove("card");
-				booking.classList.add("align-center");
 			}
 		}
 		window.addEventListener('resize', function() {
 			if (is_portrait.matches) {
 				get_in_touch.classList.remove("card");
-				booking.classList.add("align-center");
 			}
 			else {
-				booking.classList.remove("align-center");
 				get_in_touch.classList.add("card");
 			}
 		});
