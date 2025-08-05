@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<title>Random Plane Generator</title>
+	<link rel="icon" type="image/ico" href="/favicon.ico">
+	<link rel="stylesheet" href="/reset.css">
+	<link rel="stylesheet" href="/hamburgers.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/overrides.css">
+
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+	<meta name="referrer" content="no-referrer">
+
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
+	
+	<style>
+		picture, img {
+			user-select: none;
+		}
+		#year {
+			width: 10ch;
+		}
+		#disclaimer {
+			text-align: right;
+			margin-left: auto;
+			font-style: italic;
+			font-size: 15px;
+		}
+		#container {
+			align-content: flex-start;
+			text-overflow: ellipsis;
+			height: 800px;
+			width: 100%;
+			display: flex;
+			flex-direction: row;
+			flex-wrap: wrap;
+			gap: 2vw;
+		}
+		#name {
+			text-decoration: none;
+			font-size: clamp(1vw, 25px, 5vw);
+		}
+		a#name {
+			font-family: inherit;
+		}
+		#image {
+			max-width: min(100%, 600px);
+			height: 51vh;
+			object-fit: cover;
+			@media (max-width: 430px) {
+				height: auto;
+				object-fit: contain;
+			}
+		}
+		#description {
+			min-width: 30%;
+			flex: 1 1;
+			max-width: min(100%, 500px);
+		}
+		.mw-empty-elt {
+			display: none;
+		}
+		.banner-cover {
+			margin-left: 0;
+		}
+		#content {
+			padding-left: 8vw;
+			padding-right: 8vw;
+		}
+		#interact-area {
+			overflow: hidden;
+			align-items: center;
+			justify-content: center;
+			display: flex;
+			flex-direction: row;
+			width: 100%;
+			flex-wrap: wrap;
+			gap: 1vmax;
+		}
+		#interact-area button {
+			min-width: 0;
+			text-overflow: ellipsis;
+		}
+		#interact-area input {
+			min-width: 0;
+			flex-grow: 1;
+			max-width: 130px;
+		}
+		.button, input {
+			box-sizing: border-box;
+			padding: 10px 14px 10px 14px;
+			margin: 0;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div id="topbar" class="box-shadow">
+			<img src="/images/skychicken-blue.png" id="logo" height="72px">
+			<h1 id="title" class="special-gothic-expanded-one-regular">Fly with Damon</h1>
+			<button id="hamburger" class="hamburger hamburger--slider">
+				<div class="hamburger-box">
+					<div class="hamburger-top"></div>
+					<div class="hamburger-middle"></div>
+					<div class="hamburger-bottom"></div>
+				</div>
+			</button>
+			<nav id="nav-links">
+				<a href="/" class="nav-link">Home</a>
+				<a href="/about" class="nav-link">About</a>
+				<a href="/booking" class="nav-link">Book a Lesson</a>
+				<a href="/contact" class="nav-link">Contact</a>
+				<a href="/art" class="nav-link">Art</a>
+			</nav>
+		</div>
+	</header>
+	<div id="content">
+		<picture>
+			<source media="(min-width: 430px)" srcset="./banner.png">
+			<source media="(max-width: 430px)" srcset="./banner_small.png">
+			<img src="./banner.png" class="banner-small">
+		</picture>
+		<div id="interact-area">
+			<button class="button auto" onclick="random_playne()">Which playne will choose you?</button>
+			<input type="text" id="year" placeholder="Year: Any" 
+			title="Year first flown
+Decades are available, e.g. '2010s'">
+		</div>
+		<span class="half-line-break"></span>
+		<h3 class="push-left"><a id="name" target="_blank" class="uncolored-link"></a></h3>
+		<span class="half-line-break"></span>
+		<div id="container">
+			<img id="image" rel="noreferrer">
+			<p id="description"></p>
+		</div>
+	<footer>
+		<b><a href="https://airamericafc.com/">Air America Flight Center</a></b> &#8226; 
+		1585 Aviation Center Parkway, Suite 602, Daytona Beach, Florida 32114<br>
+		<a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" class="uncolored-link">Linkedin</a> &#8226; 
+		<a href="https://www.instagram.com/wild_nomad_art/" class="uncolored-link">Instagram</a> &#8226; 
+		<a href="/contact/" class="uncolored-link">Contact</a>
+	</footer>
+	</div>
+	<div style="display: none"><img src="./no_image.png"></div>
+	<script src="./script.js"></script>
+</body>
+
+</html>
