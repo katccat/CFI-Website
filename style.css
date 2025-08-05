@@ -206,11 +206,11 @@ footer {
 	font-size: min(1.6vmax, 18px);
 	text-underline-offset: 0.5vmax;
 }
-.nav-link, .nav-link:visited {
+.nav-link, .nav-link:visited, .nav-link:active {
 	text-decoration: none;
 	color: inherit;
 }
-.nav-link.active {
+.nav-link.active, .nav-link.active:active {
 	text-decoration: underline;
 }
 .nav-link:hover {
