@@ -249,6 +249,10 @@ a:hover {
 a:active {
 	color: inherit;
 }
+a img {
+  display: block; /* or inline-block if necessary */
+  text-decoration: none;
+}
 
 /* Utility Classes */
 .align-center {
