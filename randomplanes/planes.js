@@ -142,7 +142,7 @@ function get_content(title) {
 				const link = data.items[0].link;
 				dummy_image.src = link;
 				dummy_image.onload = function() {
-					change_name(title + "(Image from Google)");
+					change_name(title + " (Image from Google)");
 					image.src = link;
 					description.textContent = page.extract;
 				}
