@@ -1,0 +1,14 @@
+User-agent: *
+Disallow: /reset.css
+Disallow: /style.css
+Disallow: /overrides.css
+Disallow: /hamburgers.css
+Disallow: /script.js
+Disallow: /server.py
+Disallow: /images/art/indexer.py
+Disallow: /images/art/image-list.json
+Disallow: /randomplanes/planes.js
+
+Allow: /
+
+Sitemap: https://damonwelber.com/sitemap.xml
