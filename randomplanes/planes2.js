@@ -149,7 +149,7 @@ function get_content(title, retries_left) {
 			return fetch(`https://clayrobot.net:8000/backend/randomplanes?plane=${encodeURIComponent(title)}`)
 				.then(res => res.json())
 				.then(googleData => {
-					if (googleData.error && /quota/i.test(googleData.error)) {
+					if (googleData.error.code == 429) {
 						google_quota_exceeded = true;
 						throw new Error("Google quota exceeded");
 					}
