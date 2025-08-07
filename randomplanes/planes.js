@@ -19,12 +19,12 @@ year_input.addEventListener('keydown', function(event) {
 year_input.addEventListener('keyup', function(event) {
 	if (event.keyCode === 13) enter_pressed = false;
 });
-const latest_year = 2024; // latest year with a 'first flown' category
+const latest_year = 2025; // latest year with a 'first flown' category
 const latest_decade = latest_year - (latest_year % 10);
 
 const dummy_image = new Image();
 
-const wikipedia = new URL("https://en.wikipedia.org/w/api.php");
+const wikipedia = "https://en.wikipedia.org/w/api.php";
 const decade_1890 = [
 	"Category:Aircraft first flown in 1891",
 	"Category:Aircraft first flown in 1893",
@@ -81,10 +81,11 @@ function get_random_title(year) {
 		params.cmtitle = categories[Math.floor(Math.random() * categories.length)];
 	}
 	// Construct URL
-	wikipedia.search = new URLSearchParams(params).toString();
+	const url = new URL(wikipedia);
+	url.search = new URLSearchParams(params).toString();
 	
 	// Fetch random article title
-	return fetch(wikipedia)
+	return fetch(url)
 	.then(response => response.json())
 	.then(data => {
 		const articles = data.query.categorymembers;
@@ -121,8 +122,9 @@ function get_content(title) {
 		origin: '*'
 	  };
 	  
-	wikipedia.search = new URLSearchParams(params).toString();
-	fetch(wikipedia)
+	const url = new URL(wikipedia);
+	url.search = new URLSearchParams(params).toString();
+	fetch(url)
 	.then(response => response.json())
 	.then(data => {
 		const page = data.query.pages[0];
