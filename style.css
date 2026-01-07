@@ -188,7 +188,46 @@ footer .credit {
 	font-size: 15px !important;
 	color: #333333;
 }
+/* Art Page */
+#art-container {
+	display: grid;
+	/* Creates exactly 3 columns of equal width */
+	grid-template-columns: repeat(5, 1fr);
+	/* Adds space between the rows and columns */
+	gap: 2vw;
 
+	width: min(100%, 900px);
+	/* Align items vertically in the center of their row */
+	align-items: center;
+}
+
+#art-container img {
+	width: 100%;
+	background-color: #ffffff;
+	/* The white "mat" color */
+
+	/* The "Frame" Effect */
+	border: 5px solid #e6e6e6;
+	/* A very subtle light grey border */
+	/* The drop shadow to give it depth and make it pop */
+	box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1), 0 2px 4px rgba(0, 0, 0, 0.06);
+
+	transition: transform 0.3s ease, box-shadow 0.3s ease;
+	cursor: pointer;
+	position: relative;
+}
+
+#art-container img:hover {
+	transform: scale(1.05) rotate(2deg);
+
+	/* Make the shadow deeper to simulate height */
+	box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+	z-index: 10;
+}
+
+#art-container img:nth-child(even):hover {
+	transform: scale(1.05) rotate(-2deg);
+}
 /* Buttons */
 .button {
 	display: inline-block;

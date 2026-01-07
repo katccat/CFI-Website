@@ -18,13 +18,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 	<style>
-		#art-container {
-			height: min(32rem, 44vmax);
-			width: min(32rem, 100%);
-			display: flex;
-			flex-direction: row;
-			justify-content: flex-start;
-		}
 		#reveal-contact.button::before {
 			content: 'Order Now';
 		}
@@ -56,8 +49,7 @@
 	</header>
 
 	<div id="content">
-		<div class="column-wrapper">
-			<div class="text-column">
+		<div>
 				<div class="text">
 					<h1>I take commissions!</h1>
 					<br>
@@ -66,10 +58,11 @@
 						I can paint your favorite aircraft or even make you a portrait, digitally or on a canvas.
 					</p>
 				</div>
-				<br><br>
+				<br>
 				<h2>Pricing: $20</h2>
 				<span class="half-line-break"></span>
-				<p>Commission me at my number, email, or my <a href="https://www.instagram.com/flywithdamon/">Instagram</a> where you can see more of my art.</p>
+				<p>Commission me at my number, email, or my <a href="https://www.instagram.com/flywithdamon/">Instagram</a> where you
+					can see more of my art.</p>
 				<span class="half-line-break"></span>
 				<div id="contact-interact-wrapper">
 					<button class="button auto" id="reveal-contact"></button>
@@ -77,11 +70,9 @@
 						<p>Email: emailto0000@gmail.com<br>Phone: (555)-555-5555</p>
 					</div>
 				</div>
-			</div>
-			<div id="art-container">
-				<img id="art" class="slideshow" alt="My paintings and digital art of airplanes or birds against scenic backdrops.">
-			</div>
 		</div>
+		<br>
+		<div id="art-container" alt="My paintings and digital art of airplanes and birds against scenic backdrops."></div>
 		<footer>
 			<div id="left">
 				<span class="half-line-break"></span>
@@ -100,7 +91,7 @@
 	</div>
 	<script src="/script.js"></script>
 	<script>
-		const art_element = document.getElementById("art");
+		const art_element = document.getElementById("art-container");
 		const art_directory = "/images/art/";
 		let images = [];
 
@@ -109,7 +100,15 @@
 		.then(data => {
 			images = data;
 			if (images.length > 0) {
-				start_slide_show(art_element, art_directory, images, 5000);
+				for (const image_name of images) {
+					let img = document.createElement('img');
+					const source = art_directory + image_name;
+					img.src = source;
+					img.onclick = function() {
+						location.href = source;
+					}
+					art_element.appendChild(img);
+				}
 			}
 		})
 		.catch(error => {

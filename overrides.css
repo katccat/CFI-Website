@@ -51,6 +51,9 @@
 	img.banner-small {
 		width: 100vw;
 	}
+	#art-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
 }
 @media (max-width: 600px) {
 	body {
