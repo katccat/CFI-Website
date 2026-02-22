@@ -137,11 +137,11 @@ function get_content(title, retries_left) {
 				return true;
 			}
 			// No Wikipedia image
-			google_images_fallback(title);
+			google_images_fallback(title, page.extract);
 		});
 }
 
-function google_images_fallback(title) {
+function google_images_fallback(title, extract) {
 	if (google_quota_exceeded) {
 		console.log("Skipping Google fallback due to quota exceeded");
 		return false;
@@ -162,7 +162,7 @@ function google_images_fallback(title) {
 			return new Promise(resolve => {
 				change_name(title + " (Image from Google)");
 				image.onload = () => {
-					description.textContent = page.extract;
+					description.textContent = extract;
 					resolve(true);
 				};
 				image.onerror = () => {
