@@ -151,7 +151,7 @@ function google_images_fallback(title) {
 	return fetch(`https://backend.clayrobot.net/randomplanes?plane=${encodeURIComponent(title)}`)
 		.then(res => res.json())
 		.then(googleData => {
-			if (googleData.error.code == 429) {
+			if (googleData.error && googleData.error.code == 429) {
 				google_quota_exceeded = true;
 				throw new Error("Google quota exceeded");
 			}
