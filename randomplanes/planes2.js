@@ -148,7 +148,7 @@ function google_images_fallback(title) {
 	}
 
 	console.log("Google fallback requested for", title);
-	return fetch(`https://clayrobot.net:8000/backend/randomplanes?plane=${encodeURIComponent(title)}`)
+	return fetch(`https://backend.clayrobot.net/randomplanes?plane=${encodeURIComponent(title)}`)
 		.then(res => res.json())
 		.then(googleData => {
 			if (googleData.error.code == 429) {
