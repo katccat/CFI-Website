@@ -138,7 +138,7 @@ function get_content(title) {
 		}
 		else {
 			console.log("Google fallback requested ^");
-			fetch("https://clayrobot.net:8000/backend/randomplanes?plane=" + title)
+			fetch("https://backend.clayrobot.net/randomplanes?plane=" + title)
 			.then(response => response.json())
 			.then(data => {
 				const link = data.items[0].link;
