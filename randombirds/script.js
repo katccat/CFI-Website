@@ -133,37 +133,12 @@ function get_content(title) {
 			}
 		}
 		else {
-			console.log("Google fallback requested ^");
-			fetch("https://backend.clayrobot.net/randombirds?bird=" + title, {
-	                headers: {
-	                        'Referer': referrer
-	                }
-                })
-			.then(response => response.json())
-			.then(data => {
-				//console.log(data);
-				const src = data.items[0].link;
-				dummy_image.src = src;
-				dummy_image.onload = function() {
-					change_name(title);
-					change_picture(src, true);
-					description.textContent = page.extract;
-				}
-				dummy_image.onerror = function(error) {
-					console.error("Google fallback failed:", error);
-					change_name(title);
-					change_picture();
-					description.textContent = page.extract;
-				}
-			})
-			.catch(error => {
-				console.error("Google fallback failed:", error);
-				change_name(title);
-				change_picture();
-				description.textContent = page.extract;
-			});
+			console.error("Google fallback failed:");
+			change_name(title);
+			change_picture();
+			description.textContent = page.extract;
 		}
-	});
+	}).catch({});
 }
 
 function random_bird(retry_count = 0) {
