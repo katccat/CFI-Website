@@ -8,6 +8,7 @@ Disallow: /server.py
 Disallow: /images/art/indexer.py
 Disallow: /images/art/image-list.json
 Disallow: /randomplanes/planes.js
+Disallow: /randombirds/script.js
 
 Allow: /
 
