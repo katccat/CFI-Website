@@ -1,0 +1,90 @@
+---
+import Base from '../layouts/Base.astro'
+import Img from '../components/Img.astro'
+import { SITE_NAME } from '../consts'
+---
+<Base title=`${SITE_NAME} | Flight Training in Daytona`>
+  <div id="content">
+    <Img
+      src="/images/learntofly2.png"
+      class="banner-small"
+      alt="Learn to fly in Daytona!"
+      title="Flight Training & Lessons at Daytona Beach"
+    />
+
+    <h1 class="push-left align-left">Damon Welber</h1>
+    <h2 class="push-left align-left">CFI-I/MEI</h2>
+    <br />
+    <div id="wrapper">
+      <Img src="/images/avionics.jpeg" id="avionics" class="article-image" alt="CFI looking at avionics" />
+      <div class="bio">
+        <p>
+          I’m an independent flight instructor at Air America Flight Center in Daytona Beach. I can instruct in many
+          different planes, such as the Piper Aztec, Cessna 172, Pipistrel Alpha, Piper Arrow, and now the Grumman AA-5 Traveler. I can
+          also instruct you in one of your own! If you are a student at Embry-Riddle, I understand what your school wants
+          and expects as a student there myself.
+          <br /><br />
+          I am currently taking Private, Commercial, Instrument, and CFI students. Some of what I offer includes <b
+            >Biannual Flight Reviews</b
+          > (BFRs), <b>Instrument Proficiency Checks</b> (IPCS), and <b>Discovery Flights</b>. I offer Discovery Flights
+          for a flat rate of $94.
+          <br /><br />
+          Click <a href="/booking/">here</a> to learn more about my services as a CFI.
+        </p>
+        <br />
+        <div class="align-center">
+          <a class="button" href="/about/">About Me</a>
+          <a class="button" href="https://www.instagram.com/damonwelber/">Instagram</a>
+        </div>
+      </div>
+    </div>
+    <br /><br />
+    <div class="align-center">
+      <h2>New: Grumman AA-5 Traveler!</h2><br />
+      <Img src="/images/grumman.jpeg" class="article-image featured" id="grumman" />
+    </div>
+    <br /><br />
+    <h2 class="align-center">Hourly Rate: $45</h2>
+    <p class="snippet align-center">
+      I bill based off of flight time and any additional ground training before or after a flight.
+    </p>
+    <br />
+    <h2 class="align-center">Discovery Flights: $94 Flat Rate</h2>
+    <p class="snippet align-center"></p>
+    <div class="align-center">
+      <a class="button" href="/booking#get-in-touch">Book a Lesson</a>
+      <a class="button" href="/files/CFI Master Document.pdf">Course Sequence</a>
+    </div>
+    <br /><br />
+    <a href="/randomplanes/">
+      <Img src="/images/cessna-painting.heic" class="article-image" id="painting" />
+    </a>
+  </div>
+</Base>
+
+<style is:global>
+  #wrapper {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    column-gap: 2vw;
+    row-gap: 4vw;
+  }
+  #avionics {
+    width: 31.25rem;
+    max-width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+  .bio {
+    flex: 1;
+    min-width: 40%;
+  }
+  #painting {
+    width: min(100%, 640px);
+  }
+  #grumman {
+    width: min(100%, 640px);
+  }
+</style>

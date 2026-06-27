@@ -1,47 +1,8 @@
-const hamburger_menu = document.getElementById("hamburger");
-const nav_links = document.getElementById("nav-links");
 const reveal_contact_button = document.getElementById("reveal-contact");
 const contact_area_div = document.getElementById("contact-text");
+// Used by the booking page's inline script to toggle its card layout.
 const is_portrait = window.matchMedia("(max-width: 1024px)");
-let was_desktop = true;
 
-function nav_menu_show() {
-	hamburger_menu.classList.add("active");
-	nav_links.classList.add("visible");
-}
-function nav_menu_hide() {
-	hamburger_menu.classList.remove("active");
-	nav_links.classList.remove("visible");
-}
-window.onload = function() {
-	if (is_portrait.matches) {
-		nav_links.classList.add("box-shadow");
-		was_desktop = false;
-	}
-}
-
-window.addEventListener('resize', function() {
-	if (is_portrait.matches) {
-		nav_links.classList.add("box-shadow");
-		if (was_desktop) {
-			nav_menu_hide();
-		}
-		was_desktop = false;
-	}
-	else { // landscape
-		nav_menu_show(); // makes sure nav links are visible in desktop view
-		nav_links.classList.remove("box-shadow");
-		was_desktop = true;
-	}
-});
-hamburger_menu.addEventListener('click', function() {
-	if (nav_links.classList.contains('visible')) {
-		nav_menu_hide();
-	}
-	else {
-		nav_menu_show();
-	}
-});
 function reveal_contact() {
 	// Obfuscated data (Base64 encoded)
 	const encodedEmail = "d2VsYmVyZDIwMDRAZ21haWwuY29t";

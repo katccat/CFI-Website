@@ -1,0 +1,2 @@
+export const SITE_NAME = 'Damon Welber'
+export const DEFAULT_DESCRIPTION = 'Learn to fly with Damon Welber, a CFI at Air America Flight Center in Daytona Beach. Offering private, commercial, and CFI flight training in aircraft like the Cessna 172, Pipistrel Alpha, and more. Book your flying lessons today!'

@@ -1,3 +1,7 @@
+// Served as a static module from /public, so reference the fallback image by
+// its public URL rather than importing it (browsers can't import a PNG).
+const noImageUrl = '/randomplanes/no_image.png'
+
 const name = document.getElementById("name");
 const image = document.getElementById("image");
 const description = document.getElementById("description");
@@ -178,6 +182,10 @@ function google_images_fallback(title, extract) {
 		});
 }
 
+// This file is now an ES module, so its functions aren't global. The "generate"
+// button uses an inline onclick="random_playne()", so expose it on window.
+window.random_playne = random_playne;
+
 function random_playne(year = year_input.value, retries_left = MAX_RETRIES) {
 	get_random_title(year)
 		.then(title => get_content(title, retries_left))
@@ -189,14 +197,14 @@ function random_playne(year = year_input.value, retries_left = MAX_RETRIES) {
 			else if (!success) {
 				// Final failure
 				change_name();
-				image.src = "no_image.png";
+				image.src = noImageUrl;
 				description.textContent = "";
 			}
 		})
 		.catch(error => {
 			console.error("Error fetching article:", error);
 			change_name();
-			image.src = "no_image.png";
+			image.src = noImageUrl;
 			description.textContent = "";
 		});
 }

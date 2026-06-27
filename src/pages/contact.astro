@@ -1,0 +1,47 @@
+---
+import Base from '../layouts/Base.astro'
+import Img from '../components/Img.astro'
+import { SITE_NAME } from '../consts'
+---
+<Base title=`${SITE_NAME} | Contact`>
+  <div id="content">
+    <div class="column-wrapper card" id="get-in-touch">
+      <div class="text-column">
+        <div>
+          <h1>Contact Me</h1>
+          <br />
+          <p>
+            Have a question? Let's get in touch.
+            <br /><br />
+            Don't hesitate to reach out over text as this is my preferred method of communication.
+            <br /><br />
+            Я говорю по-русски.
+          </p>
+        </div>
+        <span class="half-line-break"></span>
+        <div id="contact-interact-wrapper">
+          <button class="button auto" id="reveal-contact"></button>
+          <div id="contact-text">
+            <p>Email: emailto0000@gmail.com<br />Phone: (555)-555-5555</p>
+          </div>
+        </div>
+      </div>
+      <Img
+        src="/images/rainbow.jpeg"
+        id="rainbow"
+        alt="A vivid rainbow in the distant over vast, flat farmland as seen out of an airplane window."
+        title="Contact me now so I can book you flight lessons."
+      />
+    </div>
+  </div>
+  <script is:inline src="/script.js"></script>
+</Base>
+
+<style is:global>
+  #rainbow {
+    width: 35rem;
+    max-width: 100%;
+    height: 28rem;
+    object-fit: cover;
+  }
+</style>

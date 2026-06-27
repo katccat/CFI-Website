@@ -1,0 +1,11 @@
+---
+import dimensions from 'virtual:image-dimensions'
+
+// <img> wrapper that fills in width/height from the image's intrinsic size
+// (read off the file in /public at build time) to prevent layout shift.
+// Pass width/height explicitly to override the auto values.
+const { src, ...rest } = Astro.props
+const key = src && !src.startsWith('/') ? '/' + src : src
+const dim = dimensions[key] ?? {}
+---
+<img src={src} width={dim.width} height={dim.height} {...rest} />

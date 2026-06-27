@@ -1,0 +1,41 @@
+---
+import SiteNav from '../components/SiteNav.jsx'
+import SiteFooter from '../components/SiteFooter.astro'
+import { SITE_NAME, DEFAULT_DESCRIPTION } from '../consts'
+
+// Shared page shell: the single <head> (title/description/canonical come in as
+// props), the fonts + global stylesheet, and the interactive nav island.
+// Pages supply their own #content wrapper via the slot; the <SiteFooter /> is
+// rendered here after that content so every page shares one footer placement.
+// Per-page <style>/<link> can use slot="head".
+
+const { title = SITE_NAME, description = DEFAULT_DESCRIPTION, canonical } = Astro.props
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    {canonical && <link rel="canonical" href={canonical} />}
+    <link rel="icon" type="image/ico" href="/favicon.ico" />
+    <link rel="stylesheet" href="/styles/global.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Special+Gothic+Expanded+One&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <slot name="head" />
+  </head>
+  <body>
+    <SiteNav client:load currentPath={Astro.url.pathname} />
+    <slot />
+    <SiteFooter />
+  </body>
+</html>

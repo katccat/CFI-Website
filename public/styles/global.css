@@ -1,3 +1,7 @@
+@import './reset.css';
+@import './hamburgers.css';
+@import './overrides.css';
+
 :root {
 	--topbar-height: 90px;
 	--topbar-padding: 4vw;
@@ -58,11 +62,15 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	background-image: url(images/bgmain.png);
+	background-image: url(/images/bgmain.png);
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #ccd2d6;
 	-webkit-tap-highlight-color: transparent;
+	min-height: 100vh;
+  	min-height: 100dvh;
+	display: flex;
+  	flex-direction: column;
 }
 #topbar {
 	display: flex;
@@ -123,17 +131,17 @@ body {
 	align-self: flex-start;
 }
 #content {
+	background-color: rgba(245, 245, 245, 0.85);
+  	flex: 1;
 	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	min-height: 100lvh;
 	z-index: 0;
 	padding-top: calc(var(--content-padding-top) + var(--topbar-height));
 	padding-left: var(--content-padding);
 	padding-right: var(--content-padding);
-	/*padding-bottom: 150px;*/
-	background-color: rgba(245, 245, 245, 0.85);
+	padding-bottom: 15px;
 }
 .column-wrapper {
 	width: 100%;
@@ -160,9 +168,11 @@ img.slideshow.fade-out {
 }
 .article-image {
 	max-width: 100%;
+	height: auto;
 }
 footer {
-	background-color: rgba(249, 249, 249, 0.3);
+	bottom: 0;
+	background-color: rgba(249, 249, 249, 0.9);
 	position: relative;
 	display: flex;
 	flex-wrap: wrap;
@@ -172,7 +182,6 @@ footer {
 	text-align: center;
 	left: 0;
 	width: 100vw;
-	margin: 15px 0 0 0;
 	padding: 15px var(--content-padding) 15px var(--content-padding);
 	column-gap: 25px;
 	row-gap: 10px;
@@ -335,6 +344,7 @@ a img {
 	vertical-align: center;
 	padding: 0 10px 0 10px;
 	height: 45px;
+	width: auto;
 }
 .icon.wiggle:hover {
 	animation: wiggle 0.6s;

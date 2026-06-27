@@ -1,0 +1,69 @@
+---
+import Base from '../layouts/Base.astro'
+import { SITE_NAME } from '../consts'
+---
+<Base title=`${SITE_NAME} | Art`>
+  <div id="content">
+    <div>
+      <div class="text">
+        <h1>I take commissions!</h1>
+        <br />
+        <p>
+          I love planes, and that's no secret if you look at my sketchbook. I can paint your favorite aircraft or even
+          make you a portrait, digitally or on a canvas.
+        </p>
+      </div>
+      <br />
+      <h2>Pricing: $20</h2>
+      <span class="half-line-break"></span>
+      <p>
+        Commission me at my number, email, or my <a href="https://www.instagram.com/damonwelber/">Instagram</a> where you
+        can see more of my art.
+      </p>
+      <span class="half-line-break"></span>
+      <div id="contact-interact-wrapper">
+        <button class="button auto" id="reveal-contact"></button>
+        <div id="contact-text">
+          <p>Email: emailto0000@gmail.com<br />Phone: (555)-555-5555</p>
+        </div>
+      </div>
+    </div>
+    <br />
+    <div id="art-container"></div>
+  </div>
+  <script is:inline src="/script.js"></script>
+  <script is:inline>
+    const art_element = document.getElementById("art-container");
+    const art_directory = "/images/art/";
+    let images = [];
+
+    fetch(art_directory + "image-list.json")
+      .then((response) => response.json())
+      .then((data) => {
+        images = data;
+        if (images.length > 0) {
+          for (const image_name of images) {
+            let img = document.createElement("img");
+            const source = art_directory + image_name;
+            img.src = source;
+            img.onclick = function () {
+              location.href = source;
+            };
+            art_element.appendChild(img);
+          }
+        }
+      })
+      .catch((error) => {
+        console.error("Error loading image list:", error);
+      });
+  </script>
+</Base>
+
+<style is:global>
+  #reveal-contact.button::before {
+    content: "Order Now";
+  }
+  .text-column {
+    min-width: 300px;
+  }
+</style>
