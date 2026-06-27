@@ -5,7 +5,7 @@
 :root {
 	--topbar-height: 90px;
 	--topbar-padding: 4vw;
-	--content-padding: 8vw;
+	--content-padding: 6vw;
 	--content-padding-top: 30px;
 	--theme-blue: #0071db;
 }
@@ -62,7 +62,7 @@ body {
 	-webkit-font-smoothing: antialiased;
 	-moz-osx-font-smoothing: grayscale;
 	text-rendering: optimizeLegibility;
-	background-image: url(/images/bgmain.png);
+	background-image: url(/images/bgmain.webp);
 	background-attachment: fixed;
 	background-size: cover;
 	background-color: #ccd2d6;
@@ -116,6 +116,7 @@ body {
 .banner-small {
 	max-height: 40vh;
 	width: 100%;
+	height: auto;
 	margin-top: calc(-1 * var(--content-padding-top));
 	margin-bottom: 15px;
 	align-self: center;
@@ -123,6 +124,7 @@ body {
 }
 .banner-cover {
 	max-height: 60vh;
+	height: auto;
 	width: 100vw;
 	object-fit: cover;
 	margin-left: calc(-1 * var(--content-padding));
@@ -139,8 +141,7 @@ body {
 	align-items: center;
 	z-index: 0;
 	padding-top: calc(var(--content-padding-top) + var(--topbar-height));
-	padding-left: var(--content-padding);
-	padding-right: var(--content-padding);
+	padding-inline: var(--content-padding);
 	padding-bottom: 15px;
 }
 .column-wrapper {
@@ -399,4 +400,70 @@ span.half-line-break {
 }
 .featured:hover {
 	transform: scale(1.02);
+}
+
+@media (max-width: 1200px) {
+	#topbar {
+		background-color: #f9f9f9;
+		backdrop-filter: none;
+		flex-wrap: wrap;	
+	}
+	#topbar .hamburger {
+		display: block;
+	}
+	#nav-links {
+		width: 100%;
+		visibility: hidden;
+		opacity: 0;
+		z-index: 1;
+		font-weight: lighter;
+		flex-direction: column;
+		padding: 0;
+		width: 100vw;
+		margin-left: calc(var(--topbar-padding) * -1);
+		margin-right: calc(var(--topbar-padding) * -1);
+		align-items: center;
+		background-color: #0071db;
+		color: white;
+		gap: 0;
+	}
+	.nav-link {
+		font-weight: normal;
+		width: 100%;
+		text-align: center;
+		padding-left: var(--topbar-padding);
+		padding-right: var(--topbar-padding);
+		font-size: 2.8vmax;
+		line-height: 5vmax;
+	}
+	.nav-link, .nav-link:visited {
+		text-decoration: none;
+		color: inherit;
+	}
+	.nav-link.active {
+		text-decoration: none;
+		background-color: #f9f9f9;
+		color:#0071db;
+	}
+	.nav-link:hover, .nav-link:active {
+		opacity: 1;
+		color: rgba(255, 255, 255, 0.7);
+	}
+	.nav-link.active:hover {
+		color:#0071dbb3;
+	}
+	img.banner-small {
+		width: 100vw;
+	}
+	#art-container {
+		grid-template-columns: repeat(3, 1fr);
+	}
+}
+@media (max-width: 600px) {
+	body {
+		background-size: auto 1000px;
+	}
+	body, #content {
+		min-height: 1000px;
+	}
 }
