@@ -56,7 +56,7 @@ export default function SiteNav({ currentPath }) {
             title="Damon Welber | Flight Training in Daytona Beach"
           />
         </a>
-        <h1 id="title" className="special-gothic-expanded-one-regular">
+        <h1 id="title">
           Damon Welber
         </h1>
         <button

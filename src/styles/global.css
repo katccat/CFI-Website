@@ -1,41 +1,30 @@
 @import './reset.css';
 @import './hamburgers.css';
-@import './overrides.css';
+@import './footer.css';
 
 :root {
-	--topbar-height: 90px;
+	--topbar-height: 50px;
 	--topbar-padding: 4vw;
 	--content-padding: 6vw;
 	--content-padding-top: 30px;
-	--theme-blue: #0071db;
+	--theme-blue: #0b7fec;
+	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
+	--font-heading: 'Special Gothic Expanded One';
+	--font-subheading: 'Montserrat';
 }
 
 @media (max-width: 1000px) {
 	:root {
-		--topbar-height: 76px;
+		--topbar-height: 60px;
 	}
-}
-
-/* Fonts */
-.special-gothic-expanded-one-regular {
-	font-family: "Special Gothic Expanded One", sans-serif;
-	font-weight: 400;
-	font-style: normal;
-}
-.montserrat-600 {
-	font-family: "Montserrat", sans-serif;
-	font-optical-sizing: auto;
-	font-weight: 600;
-	font-style: normal;
 }
 
 /* Typography */
 * {
-	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+	font-family: var(--font-body);
 }
 h1, h2, h3, h4, h5, h6 {
-	font-family: "Montserrat", sans-serif;
-	font-optical-sizing: auto;
+	font-family: var(--font-subheading);
 	font-weight: 600;
 	font-style: normal;
 }
@@ -57,6 +46,10 @@ li {
 	margin-left: 1em;
 }
 
+img {
+	user-select: none;
+}
+
 /* Layout and Structure */
 body {
 	-webkit-font-smoothing: antialiased;
@@ -76,7 +69,7 @@ body {
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: flex-start;
+	justify-content: space-between;
 	z-index: 2;
 	width: 100vw;
 	position: fixed;
@@ -90,12 +83,20 @@ body {
 }
 #logo {
 	height: var(--topbar-height);
+	/* display: none; */
 }
 #title {
+	background-color: var(--theme-blue);
+	color: white;
+	font-family: var(--font-heading);
 	font-style: italic;
-	font-size: min(6vw, 50px);
+	font-weight: 500;
+	/* font-style: italic; */
+	font-size: min(6vw, 30px);
 	min-width: 62px;
-	flex: 1 1 0;
+	/* flex: 1 1 0; */
+	margin-right: auto;
+	user-select: none;
 }
 #topbar .hamburger {
 	--hamburger-line-color: var(--theme-blue);
@@ -170,33 +171,6 @@ img.slideshow.fade-out {
 .article-image {
 	max-width: 100%;
 	height: auto;
-}
-footer {
-	bottom: 0;
-	background-color: rgba(249, 249, 249, 0.9);
-	position: relative;
-	display: flex;
-	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	z-index: 1;
-	text-align: center;
-	left: 0;
-	width: 100vw;
-	padding: 15px var(--content-padding) 15px var(--content-padding);
-	column-gap: 25px;
-	row-gap: 10px;
-
-}
-footer #left {
-	/*text-align: left;*/
-}
-footer #right {
-
-}
-footer .credit {
-	font-size: 15px !important;
-	color: #333333;
 }
 /* Art Page */
 #art-container {
@@ -351,7 +325,7 @@ a img {
 	animation: wiggle 0.6s;
 }
 .box-shadow {
-	box-shadow: 0px 5px 7px 0px rgba(0,0,0,0.3);
+	box-shadow: 0px 5px 7px 0px rgba(37, 37, 37, 0.14);
 }
 .box-shadow-reverse {
 	box-shadow: inset 0px 5px 7px 0px rgba(0, 0, 0, 0.1);
@@ -402,7 +376,7 @@ span.half-line-break {
 	transform: scale(1.02);
 }
 
-@media (max-width: 1200px) {
+@media (max-width: 1000px) {
 	#topbar {
 		background-color: #f9f9f9;
 		backdrop-filter: none;

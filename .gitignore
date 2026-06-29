@@ -2,6 +2,7 @@ node_modules/
 dist/
 _site/
 /assets/
+/unused/
 /old/
 .DS_Store
 ._*

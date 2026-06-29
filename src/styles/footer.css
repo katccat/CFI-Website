@@ -1,0 +1,27 @@
+footer {
+	bottom: 0;
+	background-color: rgba(249, 249, 249, 0.9);
+	position: relative;
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	z-index: 1;
+	text-align: center;
+	left: 0;
+	width: 100vw;
+	padding: 15px var(--content-padding) 15px var(--content-padding);
+	column-gap: 25px;
+	row-gap: 10px;
+
+}
+footer #left {
+	/*text-align: left;*/
+}
+footer #right {
+
+}
+footer .credit {
+	font-size: 15px !important;
+	color: #333333;
+}
