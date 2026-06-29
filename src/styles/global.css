@@ -86,8 +86,8 @@ body {
 	/* display: none; */
 }
 #title {
-	background-color: var(--theme-blue);
-	color: white;
+	/* background-color: var(--theme-blue); */
+	/* color: white; */
 	font-family: var(--font-heading);
 	font-style: italic;
 	font-weight: 500;

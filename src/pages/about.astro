@@ -31,13 +31,19 @@ import { SITE_NAME } from '../consts'
       </div>
 
       <div class="image-grid">
-        <div class="left-column">
-          <Img src="/images/selfies/peace.jpeg" />
+        <div class="bottom-row">
+          <Img src="/images/selfies/on-plane.jpg" />
         </div>
-        <div class="right-column">
-          <Img src="/images/selfies/headset.jpeg" />
-          <Img src="/images/selfies/in-plane.jpeg" />
+        <div class="top-row">
+          <div class="left-column">
+            <Img src="/images/selfies/peace.jpeg" />
+          </div>
+          <div class="right-column">
+            <Img src="/images/selfies/in-plane.jpeg" />
+            <Img src="/images/selfies/headset.jpeg" />
+          </div>
         </div>
+        
       </div>
     </div>
   </div>
@@ -46,10 +52,25 @@ import { SITE_NAME } from '../consts'
 <style is:global>
   .image-grid {
     display: flex;
-    width: min(100%, 600px);
-    height: min(500px, 40vmax);
+    flex-direction: column;
+    width: min(100%, 500px);
     gap: max(1vmin, 5px);
+  }
+  .top-row {
+    display: flex;
+    width: 100%;
+    height: min(400px, 40vmax);
+    gap: inherit;
     justify-content: center;
+  }
+  .bottom-row {
+    width: 100%;
+    height: min(250px, 20vmax);
+  }
+  .bottom-row img {
+    width: 100%;
+    height: 100%;
+    object-position: center;
   }
   .image-grid img {
     max-height: 100%;
