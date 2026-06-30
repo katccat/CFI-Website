@@ -1,0 +1,43 @@
+---
+import Img from './Img.astro'
+
+// Full-width banner image with optional centered overlay text.
+const { src, alt, title, text } = Astro.props
+---
+<div class="banner">
+  <Img src={src} class="banner-cover" alt={alt} title={title} />
+  {text && <div class="banner-text">{text}</div>}
+</div>
+
+<style>
+  .banner {
+    position: relative;
+    width: 100vw;
+    margin-inline: calc(-1 * var(--content-padding));
+    margin-top: calc(-1 * var(--content-padding-top));
+    margin-bottom: 1rem;
+    align-self: flex-start;
+    container-type: inline-size;
+  }
+  .banner :global(.banner-cover) {
+    display: block;
+    margin: 0;
+    width: 100%;
+  }
+  .banner-text {
+    user-select: none;
+    font-family: var(--font-heading);
+    font-weight: 100;
+    letter-spacing: 0.1rem;
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 1rem;
+    color: #fff;
+    font-size: 6cqi;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+</style>

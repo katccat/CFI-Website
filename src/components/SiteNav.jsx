@@ -48,17 +48,19 @@ export default function SiteNav({ currentPath }) {
   return (
     <header>
       <div id="topbar" className="box-shadow">
-        <a href="/">
+        {/* <a className='no-decoration' href="/"> */}
           <img
             src="/images/skychicken-blue.png"
             id="logo"
             height="72px"
             title="Damon Welber | Flight Training in Daytona Beach"
           />
+        {/* </a> */}
+        <a className='no-decoration title' href="/">
+          <h1 className="title">
+            Damon Welber
+          </h1>
         </a>
-        <h1 id="title">
-          Damon Welber
-        </h1>
         <button
           id="hamburger"
           className={`hamburger hamburger--slider${open ? ' active' : ''}`}

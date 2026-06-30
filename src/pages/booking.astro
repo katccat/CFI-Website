@@ -1,17 +1,17 @@
 ---
 import Base from '../layouts/Base.astro'
 import Img from '../components/Img.astro'
+import Banner from '../components/Banner.astro'
 import { SITE_NAME } from '../consts'
 ---
 <Base title=`${SITE_NAME} | Book a Lesson`>
   <div id="content">
-    <Img
-      src="/images/bookalesson2.png"
-      class="banner-cover"
+    <Banner
+      src="/images/banner.webp"
       alt="Book a Lesson"
-      title="Book a flight lesson in Daytona Beach"
+      text="Book a Lesson"
     />
-    <br />
+    <section>
     <div class="column-wrapper">
       <div class="cfi-info-div">
         <h1>Hourly Rate: $45</h1>
@@ -49,7 +49,7 @@ import { SITE_NAME } from '../consts'
       </div>
     </div>
 
-    <br /><br />
+    </section>
 
     <div class="column-wrapper card" id="get-in-touch">
       <div class="text-column">
@@ -140,7 +140,7 @@ import { SITE_NAME } from '../consts'
     object-fit: cover;
   }
   #get-in-touch.card {
-    background-color: rgba(245, 245, 245, 0.65);
+    background-color: white;
     padding-left: 20px;
   }
 </style>
