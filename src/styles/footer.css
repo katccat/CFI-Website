@@ -1,29 +1,128 @@
 footer {
-	bottom: 0;
-	/* background-color: var(--theme-blue);
-	color: white; */
 	position: relative;
+	z-index: 1;
+	width: 100%;
+	margin-top: 4rem;
+	padding-top: 40px;
+	padding-bottom:  24px;
+	padding-inline: var(--content-padding);
+	border-top: 1px solid rgba(51, 51, 51, 0.1);
+}
+
+footer .footer-inner {
 	display: flex;
 	flex-wrap: wrap;
-	align-items: center;
-	justify-content: center;
-	z-index: 1;
-	text-align: center;
-	left: 0;
-	width: 100vw;
-	padding: 15px var(--content-padding) 15px var(--content-padding);
-	column-gap: 25px;
-	row-gap: 10px;
+	justify-content: space-between;
+	gap: 32px 48px;
+	max-width: 1100px;
+	margin: 0 auto;
+}
 
+footer .footer-col {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	min-width: 160px;
 }
-footer #left {
-	/*text-align: left;*/
-}
-footer #right {
 
-}
-footer .credit {
-	font-size: 15px !important;
+footer .footer-heading {
+	font-family: var(--font-subheading);
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
 	color: var(--fg-color);
+	opacity: 0.55;
+	margin: 0;
+}
+
+footer .footer-links {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+footer .footer-links li {
+	margin: 0;
+	font-size: 16px;
+}
+
+footer .footer-address {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	font-style: normal;
+	font-size: 15px;
+	line-height: 1.5;
+	color: var(--fg-color);
+}
+
+footer .footer-address a {
+	font-weight: 600;
+}
+
+footer .footer-social {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+}
+
+footer .footer-bar {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: center;
+	gap: 8px 24px;
+	max-width: 1100px;
+	margin: 32px auto 0 auto;
+	padding-top: 20px;
+	border-top: 1px solid rgba(51, 51, 51, 0.08);
+	font-size: 14px;
+	color: var(--fg-color);
+	opacity: 0.7;
+}
+
+footer .credit {
+	font-size: 14px;
+	color: var(--fg-color);
+}
+
+.icon {
+	display: inline-block;
+	vertical-align: middle;
+	/* padding-inline: 8px; */
+	height: 34px;
+	width: auto;
+	transition: opacity 0.2s ease;
+}
+
+.icon.svg {
 	opacity: 0.8;
+}
+
+.icon.svg:hover {
+	opacity: 1;
+}
+
+.icon.wiggle:hover {
+	animation: wiggle 0.6s;
+}
+
+@media (max-width: 600px) {
+	footer {
+		padding-top: 32px;
+		text-align: left;
+	}
+
+	footer .footer-inner {
+		gap: 28px;
+	}
+
+	footer .footer-bar {
+		justify-content: center;
+		text-align: center;
+	}
 }

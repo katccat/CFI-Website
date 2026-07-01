@@ -16,12 +16,13 @@
 }
 #logo {
 	height: var(--topbar-height);
-	/* display: none; */
+	display: none;
 }
 .title {
 	/* background-color: var(--theme-blue); */
 	/* color: white; */
 	font-family: var(--font-heading);
+	color: var(--theme-blue);
 	font-style: italic;
 	font-weight: 500;
 	/* font-style: italic; */
@@ -39,14 +40,68 @@ a:hover .title {
 	display: none;
 	color: var(--theme-blue);
 }
+/* Desktop navigation. Hidden on mobile (see the max-width query in global.css),
+   where the separate #mobile-menu overlay takes over instead. */
 #nav-links {
 	display: flex;
 	flex-direction: row;
 	align-content: space-between;
 	gap: 2.5vw;
-	transition: opacity 0.3s ease, visibility 0.3s ease;
 }
-#nav-links.visible {
-	opacity: 1 !important;
-	visibility: visible !important;
+
+/* Mobile full-screen menu. A standalone overlay — it does NOT reuse the
+   desktop .nav-link markup, so the two navs can be styled independently. */
+#mobile-menu {
+	display: none;
+	position: fixed;
+	/* Sits just below the fixed topbar (z-index 2), so the hamburger stays
+	   above the overlay and clickable to close the menu. */
+	top: var(--topbar-height);
+	left: 0;
+	width: 100vw;
+	height: calc(100dvh - var(--topbar-height));
+	z-index: 1;
+	background-color: rgba(249, 250, 252, 0.92);
+	backdrop-filter: blur(24px) saturate(160%);
+	-webkit-backdrop-filter: blur(24px) saturate(160%);
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.28s ease, visibility 0.28s ease;
+}
+#mobile-menu.open {
+	opacity: 1;
+	visibility: visible;
+}
+.mobile-nav-list {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4em;
+}
+.mobile-nav-link {
+	display: block;
+	padding: 0.35em 0.2em;
+	font-family: var(--font-subheading);
+	font-size: clamp(1.6rem, 7vw, 2.4rem);
+	font-weight: 400;
+	letter-spacing: 0.01em;
+	line-height: 1.2;
+	color: var(--theme-blue);
+	text-decoration: none;
+	opacity: 0.85;
+	transition: opacity 0.2s ease;
+}
+.mobile-nav-link:hover,
+.mobile-nav-link:active {
+	opacity: 1;
+	text-decoration: none;
+}
+.mobile-nav-link.active {
+	font-weight: 500;
+	opacity: 1;
 }

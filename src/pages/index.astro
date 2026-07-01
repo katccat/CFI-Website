@@ -7,10 +7,12 @@ import { SITE_NAME } from '../consts'
 <Base title=`${SITE_NAME} | Flight Training in Daytona`>
   <div id="content">
     <Banner
-      src="/images/banner.webp"
+      src="/images/sunset_banner.webp"
       alt="Learn to fly in Daytona!"
       title="Flight Training & Lessons at Daytona Beach"
       text="Learn to Fly in Daytona!"
+      diagonal
+      shadow
     />
     <section>
       <h1 class="push-left align-left">Damon Welber</h1>
@@ -39,7 +41,7 @@ import { SITE_NAME } from '../consts'
         </div>
       </div>
     </section>
-    <section class="card">
+    <section>
       <h2 class="special align-center">Hourly Rate: $45</h2>
       <h2 class="special align-center">Discovery Flights: $94 Flat Rate</h2>
       <br>
@@ -55,12 +57,12 @@ import { SITE_NAME } from '../consts'
     </section>
     <section>
       <div class="align-center">
-        <h2>Featured Plane: Van's RV-12</h2><br />
+        <h2 class="special">New Plane: Van's RV-12</h2><br />
         <Img src="/images/rv12.webp" class="article-image featured" id="grumman" />
       </div>
     </section>
     <a href="/randomplanes/">
-      <Img src="/images/cessna-painting.heic" class="article-image" id="painting" />
+      <Img src="/images/art/cessna-art-orange.jpeg" class="article-image" id="painting" />
     </a>
   </div>
 </Base>
@@ -75,7 +77,7 @@ import { SITE_NAME } from '../consts'
     row-gap: 4vw;
   }
   #avionics {
-    width: 31.25rem;
+    width: 34rem;
     max-width: 100%;
     height: auto;
     object-fit: cover;
@@ -85,7 +87,9 @@ import { SITE_NAME } from '../consts'
     min-width: 40%;
   }
   #painting {
+    margin-top: 5rem;
     width: min(100%, 640px);
+    margin-inline: auto;
   }
   #grumman {
     width: min(100%, 800px);

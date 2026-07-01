@@ -10,7 +10,7 @@
 	--content-padding-top: 30px;
 	--theme-blue: #0b7fec;
 	--bg-color: #f5f5f5;
-	--fg-color: #333333;
+	--fg-color: #181818;
 	--font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, 'Helvetica Neue', Arial, sans-serif;
 	--font-heading: 'Special Gothic Expanded One';
 	--font-subheading: 'Montserrat';
@@ -30,23 +30,39 @@ h1, h2, h3, h4, h5, h6 {
 	font-family: var(--font-subheading);
 	font-weight: 600;
 	font-style: normal;
+	line-height: 1.15;
+	letter-spacing: -0.015em;
+	color: var(--fg-color);
 }
 h1 {
-	font-size: 3.5vmax;
+	font-size: clamp(1.9rem, 3.5vmax, 3.25rem);
 }
 h2 {
-	font-size: 2.8vmax;
+	font-size: clamp(1.5rem, 2.8vmax, 2.5rem);
 }
 h3 {
-	font-size: 2.5vmax;
+	font-size: clamp(1.2rem, 2.5vmax, 1.6rem);
 	font-weight: 500;
+	letter-spacing: -0.01em;
 }
 p, li {
 	font-size: 20px;
-	color: #333333;
+	line-height: 1.65;
+	color: var(--fg-color);
 }
 li {
 	margin-left: 1em;
+	margin-bottom: 0.35em;
+}
+/* Small uppercase overline label — matches the footer section headings. */
+.eyebrow {
+	font-family: var(--font-subheading);
+	font-size: 13px;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+	color: var(--fg-color);
+	opacity: 0.55;
 }
 
 img {
@@ -85,6 +101,8 @@ section {
 .special {
 	font-family: var(--font-heading);
 	font-weight: 200;
+	letter-spacing: normal;
+	line-height: 1.25;
 	/* font-style: italic; */
 }
 .banner-cover {
@@ -122,6 +140,7 @@ section {
 .text-column {
 	flex: 1 0 0;
 	min-width: 30%;
+	height: 100%;
 }
 img.slideshow {
 	object-fit: cover;
@@ -184,6 +203,8 @@ img.slideshow.fade-out {
 	text-decoration: none;
 	box-sizing: content-box;
 	font-size: min(15px, max(4.4vw, 12px));
+	font-weight: 400;
+	letter-spacing: 0.02em;
 	padding: 10px 18px 10px 18px;
 	margin: 12px 5px 12px 5px;
 	width: 10ch;
@@ -267,12 +288,13 @@ a img {
 }
 .snippet {
 	font-size: 1.5rem;
+	line-height: 1.5;
 	/* width: min(100%, 650px); */
 	align-self: center;
 }
 .card {
-	/* background-color: white;
-	padding-inline: 20px; */
+	background-color: white;
+	padding-left: 20px;
 }
 .uncolored-link {
 	color: inherit !important;
@@ -282,16 +304,6 @@ a img {
    25% { transform: rotate(5deg); }
    50% { transform: rotate(-5deg); }
   100% { transform: rotate(0deg); }
-}
-.icon {
-	display: inline-block;
-	vertical-align: center;
-	padding: 0 10px 0 10px;
-	height: 45px;
-	width: auto;
-}
-.icon.wiggle:hover {
-	animation: wiggle 0.6s;
 }
 .box-shadow {
 	box-shadow: 0px 5px 7px 0px rgba(37, 37, 37, 0.14);
@@ -336,64 +348,32 @@ span.half-line-break {
 .featured {
 	position: relative;
 	display: inline-block;
-	border: 5px solid white;
-	border-radius: 4px;
+	border: 8px solid white;
+	/* border-radius: 4px; */
 
 	transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-.featured:hover {
-	transform: scale(1.02);
-}
 
 @media (max-width: 1000px) {
+	.card {
+		background-color: transparent;
+		padding-left: 0;
+	}
 	#topbar {
-		background-color: #f9f9f9;
-		backdrop-filter: none;
+		/* background-color: #f9f9f9; */
+		/* backdrop-filter: none; */
+		/* box-shadow: none; */
 		flex-wrap: wrap;	
 	}
 	#topbar .hamburger {
 		display: block;
 	}
+	/* Swap the desktop links for the standalone full-screen menu. */
 	#nav-links {
-		width: 100%;
-		visibility: hidden;
-		opacity: 0;
-		z-index: 1;
-		font-weight: lighter;
-		flex-direction: column;
-		padding: 0;
-		width: 100vw;
-		margin-left: calc(var(--topbar-padding) * -1);
-		margin-right: calc(var(--topbar-padding) * -1);
-		align-items: center;
-		background-color: #0071db;
-		color: white;
-		gap: 0;
+		display: none;
 	}
-	.nav-link {
-		font-weight: normal;
-		width: 100%;
-		text-align: center;
-		padding-left: var(--topbar-padding);
-		padding-right: var(--topbar-padding);
-		font-size: 2.8vmax;
-		line-height: 5vmax;
-	}
-	.nav-link, .nav-link:visited {
-		text-decoration: none;
-		color: inherit;
-	}
-	.nav-link.active {
-		text-decoration: none;
-		background-color: #f9f9f9;
-		color:#0071db;
-	}
-	.nav-link:hover, .nav-link:active {
-		opacity: 1;
-		color: rgba(255, 255, 255, 0.7);
-	}
-	.nav-link.active:hover {
-		color:#0071dbb3;
+	#mobile-menu {
+		display: block;
 	}
 	img.banner-small {
 		width: 100vw;

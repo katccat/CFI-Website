@@ -1,28 +1,44 @@
 ---
 import Img from './Img.astro'
+const year = new Date().getFullYear()
 ---
 <footer>
-  <div id="left">
-    <span class="half-line-break"></span>
-    <a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/">
-      <Img src="/images/linkedin.png" class="icon" alt="LinkedIn" />
-    </a>
-    <a href="https://www.instagram.com/damonwelber/">
-      <Img src="/images/instagram.png" class="icon" alt="Instagram" />
-    </a>
-    <a href="/randombirds/">
-      <Img src="/images/randombirds3.png" class="icon wiggle" alt="Random birds" />
-    </a>
-    <span class="half-line-break"></span>
-    <a href="/about/" class="uncolored-link">About</a>{" "}&#8226;{" "}<a href="/contact/" class="uncolored-link">Contact</a>
-    <br />
+  <div class="footer-inner">
+    <nav class="footer-col" aria-label="Footer">
+      <h3 class="footer-heading">Pages</h3>
+      <ul class="footer-links">
+        <li><a href="/about/" class="uncolored-link">About</a></li>
+        <li><a href="/contact/" class="uncolored-link">Contact</a></li>
+      </ul>
+    </nav>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">Location</h3>
+      <address class="footer-address">
+        <a href="https://airamericafc.com/">Air America Flight Center</a>
+        <span>1585 Aviation Center Parkway, Suite 602</span>
+        <span>Daytona Beach, Florida</span>
+      </address>
+    </div>
+
+    <div class="footer-col">
+      <h3 class="footer-heading">More</h3>
+      <div class="footer-social">
+        <a href="https://www.linkedin.com/in/damon-welber-bbb23a2b5/" aria-label="LinkedIn">
+          <Img src="/images/linkedin.svg" class="icon svg" alt="LinkedIn" />
+        </a>
+        <a href="https://www.instagram.com/damonwelber/" aria-label="Instagram">
+          <Img src="/images/instagram.svg" class="icon svg" alt="Instagram" />
+        </a>
+        <a href="/randombirds/" aria-label="Random birds">
+          <Img src="/images/randombirds3.png" class="icon wiggle" alt="Random birds" />
+        </a>
+      </div>
+    </div>
   </div>
-  <div id="right">
-    <b><a href="https://airamericafc.com/">Air America Flight Center</a></b>{" "}&#8226; 1585 Aviation Center Parkway, Suite 602
-    <br />
-    Daytona Beach, Florida
-    <br />
-    <span class="half-line-break"></span>
-    <span class="credit">Designed by Khan</span>
+
+  <div class="footer-bar">
+    <span>&copy; {year} Damon Welber</span>
+    <a href="https://clayrobot.net" class="credit">Designed by Khan</a>
   </div>
 </footer>

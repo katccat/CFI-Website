@@ -2,9 +2,10 @@
 import Img from './Img.astro'
 
 // Full-width banner image with optional centered overlay text.
-const { src, alt, title, text } = Astro.props
+// Pass `diagonal` to clip the bottom edge at an angle (see ATP-style banner).
+const { src, alt, title, text, diagonal, shadow } = Astro.props
 ---
-<div class="banner">
+<div class:list={['banner', { 'banner-diagonal': diagonal, 'shadow': shadow }]}>
   <Img src={src} class="banner-cover" alt={alt} title={title} />
   {text && <div class="banner-text">{text}</div>}
 </div>
@@ -19,10 +20,18 @@ const { src, alt, title, text } = Astro.props
     align-self: flex-start;
     container-type: inline-size;
   }
+  /* Bottom edge sloping up toward the right. */
+  .banner-diagonal {
+    --banner-slope: 3cqi;
+    clip-path: polygon(0 0, 100% 0, 100% calc(100% - var(--banner-slope)), 0 100%);
+  }
   .banner :global(.banner-cover) {
     display: block;
     margin: 0;
     width: 100%;
+  }
+  .banner.shadow .banner-text {
+    /* text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5); */
   }
   .banner-text {
     user-select: none;
@@ -38,6 +47,6 @@ const { src, alt, title, text } = Astro.props
     padding: 0 1rem;
     color: #fff;
     font-size: 6cqi;
-    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+    
   }
 </style>
