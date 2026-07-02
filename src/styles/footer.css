@@ -100,11 +100,11 @@ footer .credit {
 }
 
 .icon.svg {
-	opacity: 0.8;
+	/* opacity: 0.8; */
 }
 
 .icon.svg:hover {
-	opacity: 1;
+	opacity: 0.8;
 }
 
 .icon.wiggle:hover {
