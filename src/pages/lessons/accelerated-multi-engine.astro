@@ -1,0 +1,450 @@
+---
+import Base from '../../layouts/Base.astro'
+import Banner from '../../components/Banner.astro'
+import { SITE_NAME } from '../../consts'
+
+// Accelerated Multi-Engine course landing page. Content is sourced from the
+// "Accelerated Multi-Engine Course Outline" deck (public/files/…). The day-by-
+// day breakdown is rendered as a horizontal tab strip on desktop (stacking on
+// mobile); a small inline script wires up the tab switching.
+
+const SPEC = [
+  { label: 'Price', value: '$5,700', note: 'Does not include the checkride' },
+  { label: 'Requirements', value: 'Commercial Pilot Certificate, Instrument Rating, and a valid Medical (1st, 2nd, 3rd, or BasicMed)' },
+  { label: 'Includes', value: '12 hours of flight and 8 hours of ground instruction' },
+  { label: 'Aircraft', value: 'Piper Aztec PA-23-250 E/F' },
+]
+
+const DAYS = [
+  {
+    id: 'day-1',
+    label: 'Day 1',
+    schedule: [
+      { head: 'Ground: 2 hours', items: ['Introduction', 'Performance and Limitations', 'Systems'] },
+      { head: 'Flight: 3 hours', items: ['Introduction', 'Stalls, performance maneuvers, and landings'] },
+      { head: 'Pre & Post-Flight Review: 1 hour', items: [] },
+    ],
+    total: '6 hours',
+    results: ['High-Performance Endorsement', 'Complex Endorsement', 'Flight Review (optional)', 'Multi-engine landing currency'],
+  },
+  {
+    id: 'day-2',
+    label: 'Day 2',
+    schedule: [
+      { head: 'Ground: 2 hours', items: ['Principles of flight', 'Introduction to one-engine maneuvers'] },
+      { head: 'Flight: 3 hours', items: ['One-engine maneuvers', 'Single-engine instrument approaches'] },
+      { head: 'Pre & Post-Flight Review: 1 hour', items: [] },
+    ],
+    total: '6 hours',
+    results: ['Cover all remaining ACS areas'],
+  },
+  {
+    id: 'day-3',
+    label: 'Day 3',
+    schedule: [
+      { head: 'Flight: 3 hours', items: ['Focus on weak areas', 'Landings and emergencies', 'Single-engine approaches'] },
+      { head: 'Pre & Post-Flight Review: 1 hour', items: [] },
+    ],
+    total: '4 hours',
+    results: [],
+  },
+  {
+    id: 'day-4',
+    label: 'Day 4',
+    schedule: [
+      { head: 'Ground: 2 hours', items: ['Mock checkride'] },
+      { head: 'Flight: 2 hours', items: ['Mock checkride'] },
+      { head: 'Pre & Post-Flight Review: 1 hour', items: [] },
+    ],
+    total: '5 hours',
+    results: ['IACRA application complete', 'Checkride endorsements complete', '3 hours within 2 calendar months before the checkride', 'Additional class/category to a rating'],
+  },
+  {
+    id: 'checkride',
+    label: 'Checkride',
+    checkride: true,
+  },
+]
+
+const CHECK_AIRMEN = ['Bob Work', 'Steve Clegg', 'Dave Hensley', 'Rob Elwood']
+---
+<Base
+  title=`${SITE_NAME} | Accelerated Multi-Engine Course`
+  description="Earn your Multi-Engine rating in four days in a Piper Aztec. $5,700 for 12 hours of flight and 8 hours of ground — a fast, structured path built around the Commercial Pilot ACS."
+>
+  <div id="content">
+    <Banner
+      src="/images/sunset_banner.webp"
+      alt="Learn to fly in Daytona!"
+      title="Flight Training & Lessons at Daytona Beach"
+      text="Lessons"
+      diagonal
+      shadow
+    />
+    <section class="ame-hero">
+      <p class="eyebrow">Piper Aztec PA-23-250 E/F</p>
+      <h1 class="push-left align-left">Accelerated Multi-Engine Course</h1>
+      <p class="ame-tagline">Add a Multi-Engine rating in just four focused days.</p>
+    </section>
+
+    <section class="ame-spec-card box-shadow">
+      {SPEC.map((row) => (
+        <div class="ame-spec-row">
+          <div class="ame-spec-label">{row.label}</div>
+          <div class="ame-spec-value">
+            {row.value}
+            {row.note && <span class="ame-spec-note">{row.note}</span>}
+          </div>
+        </div>
+      ))}
+    </section>
+
+    <section class="ame-about">
+      <h2 class="special">Why Take This Course</h2>
+      <p>
+        A Multi-Engine rating is one of the most valuable additions you can make to your certificate. It is the
+        gateway to twin-engine aircraft: faster, more capable airplanes that carry more, fly farther, and offer the redundancy of a second engine. For pilots building toward a professional flying career, multi-engine time is exactly what airlines, charter operators, and corporate flight departments are looking for, and every hour you log here counts toward the 1,500 hours required for an ATP.
+      </p>
+      <p>
+        This course is built for efficiency. Over four days you will train intensively in the Piper Aztec, moving
+        from systems and performance through single-engine emergencies and instrument approaches. Everything is structured
+        around the Commercial Pilot ACS so you arrive at your checkride confident and prepared. Along the way you
+        will also earn your High-Performance and Complex endorsements. If you already hold your Commercial
+        certificate and an Instrument rating, this is the fastest, most direct path to flying twins.
+      </p>
+      <div class="align-center">
+        <a class="button auto" href="/booking#get-in-touch">Book This Course</a>
+        <a class="button auto" href="/files/Accelerated Multi-Engine Course Outline.pdf">Course Outline (PDF)</a>
+      </div>
+    </section>
+
+    <section class="ame-schedule">
+      <h2 class="special align-center">Your Four-Day Schedule</h2>
+
+      <div class="ame-tabs" role="tablist" aria-label="Course schedule by day">
+        {DAYS.map((day, i) => (
+          <button
+            class:list={['ame-tab', { active: i === 0 }]}
+            role="tab"
+            id={`tab-${day.id}`}
+            aria-controls={`panel-${day.id}`}
+            aria-selected={i === 0 ? 'true' : 'false'}
+            data-target={day.id}
+          >
+            {day.label}
+          </button>
+        ))}
+      </div>
+
+      {DAYS.map((day, i) => (
+        <div
+          class:list={['ame-panel box-shadow', { active: i === 0 }]}
+          role="tabpanel"
+          id={`panel-${day.id}`}
+          aria-labelledby={`tab-${day.id}`}
+          hidden={i !== 0}
+        >
+          {day.checkride ? (
+            <div class="ame-checkride">
+              <h3>Checkride</h3>
+              <p>
+                The practical test is scheduled separately and is <b>not included</b> in the $5,700 course price.
+                You will be fully prepared and endorsed by the end of Day 4. Any of the following Designated
+                Examiners / Check Airmen can conduct your checkride:
+              </p>
+              <ul class="ame-airmen">
+                {CHECK_AIRMEN.map((name) => <li>{name}</li>)}
+              </ul>
+            </div>
+          ) : (
+            <div class="ame-panel-grid">
+              <div class="ame-panel-main">
+                <h3>{day.label} Schedule</h3>
+                <ul class="ame-blocks">
+                  {day.schedule?.map((block) => (
+                    <li>
+                      <span class="ame-block-head">{block.head}</span>
+                      {block.items.length > 0 && (
+                        <ul class="ame-subitems">
+                          {block.items.map((item) => <li>{item}</li>)}
+                        </ul>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+                <p class="ame-total">Total time: <b>{day.total}</b></p>
+              </div>
+              {(day.results?.length ?? 0) > 0 && (
+                <aside class="ame-results">
+                  <h4>What you earn</h4>
+                  <ul>
+                    {day.results?.map((result) => <li>{result}</li>)}
+                  </ul>
+                </aside>
+              )}
+            </div>
+          )}
+        </div>
+      ))}
+    </section>
+
+    <section class="ame-cta align-center">
+      <h2 class="special">Ready to fly twins?</h2>
+      <p class="snippet">Get in touch to schedule your Accelerated Multi-Engine Course in Daytona Beach.</p>
+      <div class="align-center">
+        <a class="button auto" href="/booking#get-in-touch">Book a Lesson</a>
+        <a class="button auto" href="/contact/">Contact Me</a>
+      </div>
+    </section>
+  </div>
+</Base>
+
+<script is:inline>
+  document.querySelectorAll('.ame-tab').forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.target
+      document.querySelectorAll('.ame-tab').forEach((t) => {
+        const on = t === tab
+        t.classList.toggle('active', on)
+        t.setAttribute('aria-selected', on ? 'true' : 'false')
+      })
+      document.querySelectorAll('.ame-panel').forEach((panel) => {
+        const on = panel.id === `panel-${target}`
+        panel.classList.toggle('active', on)
+        panel.hidden = !on
+      })
+    })
+  })
+</script>
+
+<style>
+  #content {
+    align-items: stretch;
+  }
+  .ame-hero,
+  .ame-spec-card,
+  .ame-about,
+  .ame-schedule,
+  .ame-cta {
+    width: min(100%, 900px);
+    margin-inline: auto;
+  }
+  .ame-hero {
+    margin-bottom: 1.5rem;
+  }
+  .ame-tagline {
+    margin-top: 0.75rem;
+    font-size: 1.35rem;
+    line-height: 1.5;
+    opacity: 0.8;
+  }
+
+  /* Spec card — label / value rows, echoing the reference layout. */
+  .ame-spec-card {
+    background-color: #fff;
+    /* border-radius: 14px; */
+    padding: 0.5rem 2rem;
+    margin-bottom: 3rem;
+  }
+  .ame-spec-row {
+    display: flex;
+    gap: 2rem;
+    padding: 1.15rem 0;
+    align-items: baseline;
+  }
+  .ame-spec-row + .ame-spec-row {
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+  }
+  .ame-spec-label {
+    flex: 0 0 130px;
+    font-family: var(--font-subheading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--fg-color);
+    opacity: 0.65;
+  }
+  .ame-spec-value {
+    flex: 1;
+    font-size: 1.15rem;
+    line-height: 1.55;
+  }
+  .ame-spec-note {
+    display: block;
+    font-size: 0.9rem;
+    opacity: 0.6;
+    margin-top: 0.15rem;
+  }
+
+  .ame-about {
+    margin-bottom: 3rem;
+  }
+  .ame-about h2 {
+    margin-bottom: 1rem;
+  }
+  .ame-about p {
+    margin-bottom: 1.1rem;
+  }
+  .ame-about .align-center {
+    margin-top: 1.5rem;
+  }
+
+  /* Tabs */
+  .ame-schedule h2 {
+    margin-bottom: 1.5rem;
+  }
+  .ame-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+  }
+  .ame-tab {
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    font-size: 1rem;
+    letter-spacing: 0.01em;
+    padding: 0.7rem 1.5rem;
+    border: 1.5px solid rgba(0, 0, 0, 0.18);
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--fg-color);
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+  }
+  .ame-tab:hover {
+    border-color: var(--theme-blue);
+    color: var(--theme-blue);
+  }
+  .ame-tab.active {
+    background-color: var(--theme-blue);
+    color: #fff;
+    border-color: transparent;
+  }
+
+  /* Panels */
+  .ame-panel {
+    background-color: #fff;
+    /* border-radius: 14px; */
+    padding: 2rem 2.25rem;
+  }
+  .ame-panel[hidden] {
+    display: none;
+  }
+  .ame-panel-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+  }
+  .ame-panel-main {
+    flex: 1 1 340px;
+  }
+  .ame-panel h3 {
+    margin-bottom: 1.1rem;
+  }
+  .ame-blocks {
+    list-style: none;
+  }
+  .ame-blocks > li {
+    margin-left: 0;
+    margin-bottom: 1rem;
+  }
+  .ame-block-head {
+    font-family: var(--font-subheading);
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--theme-blue);
+  }
+  .ame-subitems {
+    list-style: disc;
+    margin-top: 0.35rem;
+    padding-left: 1.5rem;
+  }
+  .ame-subitems li {
+    font-size: 1.05rem;
+    margin-bottom: 0.15rem;
+  }
+  .ame-total {
+    margin-top: 1.25rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.08);
+    font-size: 1.1rem;
+  }
+
+  .ame-results {
+    flex: 1 1 240px;
+    background-color: var(--bg-color);
+    /* border-radius: 10px; */
+    padding: 1.5rem 1.75rem;
+    align-self: flex-start;
+  }
+  .ame-results h4 {
+    font-family: var(--font-subheading);
+    font-weight: 700;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    opacity: 0.65;
+    margin-bottom: 0.75rem;
+  }
+  .ame-results ul {
+    list-style: none;
+  }
+  .ame-results li {
+    position: relative;
+    margin-left: 0;
+    padding-left: 1.5rem;
+    font-size: 1.02rem;
+    margin-bottom: 0.5rem;
+  }
+  .ame-results li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--theme-blue);
+    font-weight: 700;
+  }
+
+  .ame-checkride h3 {
+    margin-bottom: 1rem;
+  }
+  .ame-airmen {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
+  }
+  .ame-airmen li {
+    margin-left: 0;
+    margin-bottom: 0;
+    background-color: var(--bg-color);
+    padding: 0.55rem 1.15rem;
+    border-radius: 8px;
+    font-size: 1.02rem;
+    font-weight: 500;
+  }
+
+  .ame-cta {
+    margin-top: 3.5rem;
+  }
+  .ame-cta .snippet {
+    font-size: 1.2rem;
+    margin: 0.75rem 0 1.25rem;
+  }
+
+  @media (max-width: 600px) {
+    .ame-spec-row {
+      flex-direction: column;
+      gap: 0.35rem;
+    }
+    .ame-spec-label {
+      flex-basis: auto;
+    }
+    .ame-panel {
+      padding: 1.5rem 1.25rem;
+    }
+  }
+</style>

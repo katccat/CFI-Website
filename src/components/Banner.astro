@@ -7,7 +7,7 @@ const { src, alt, title, text, diagonal, shadow } = Astro.props
 ---
 <div class:list={['banner', { 'banner-diagonal': diagonal, 'shadow': shadow }]}>
   <Img src={src} class="banner-cover" alt={alt} title={title} />
-  {text && <div class="banner-text">{text}</div>}
+  {text && <div class="banner-text" set:html={text}/>}
 </div>
 
 <style>

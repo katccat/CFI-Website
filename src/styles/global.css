@@ -51,8 +51,8 @@ p, li {
 	color: var(--fg-color);
 }
 li {
-	margin-left: 1em;
-	margin-bottom: 0.35em;
+	/* margin-left: 1em;
+	margin-bottom: 0.35em; */
 }
 /* Small uppercase overline label — matches the footer section headings. */
 .eyebrow {
