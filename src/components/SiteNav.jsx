@@ -78,7 +78,7 @@ export default function SiteNav({ currentPath }) {
           title="Damon Welber | Flight Training in Daytona Beach"
         />
         <a className="no-decoration title" href="/">
-          <h1 className="title">Damon Welber CFI</h1>
+          <h1 className="title">Better Call Damon CFI</h1>
         </a>
 
         {/* Desktop navigation — always present, hidden on mobile via CSS. */}
